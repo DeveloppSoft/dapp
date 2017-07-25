@@ -12,7 +12,7 @@ if [[ $remappings ]]; then
 fi
 
 shopt -s nullglob
-for x in `find '${DAPP_SRC}' -name '*.sol'`; do
+for x in `find ${DAPP_SRC} -name '*.sol'`; do
   (set -x; solc "${opts[@]}" --abi --bin --bin-runtime = -o "$DAPP_OUT" "$x")
   json_file=$DAPP_OUT/${x#$DAPP_SRC}.json
   (set -x; solc "${opts[@]}" "${json_opts[@]}" = "$x" >"$json_file")
