@@ -5,6 +5,7 @@ set -e
 opts=($SOLC_FLAGS)
 json_opts=--combined-json=abi,bin,bin-runtime,srcmap,srcmap-runtime
 solc --help | grep -q -- --overwrite && opts+=(--overwrite)
+solc --help | grep -q -- --optimize && opts+=(--optimize)
 
 remappings=$(dapp remappings)
 if [[ $remappings ]]; then
